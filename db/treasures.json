@@ -1,0 +1,34 @@
+{
+  "_id":{"$oid":"000000000000000000000001"},
+  "name":"Diamonds",
+  "difficulty":1,
+  "loc":{"lat":-4,"lng":11, "name":"Brazil"},
+  "tags":['a', 'b', 'c'],
+  "photos":['/001/1.jpg','/001/2.jpg'],
+  "hints":['hint1','hint2', 'hint3'],
+  "isFound":false,
+  "order":1
+}
+
+{
+  "_id":{"$oid":"000000000000000000000002"},
+  "name":"Gold",
+  "difficulty":3,
+  "loc":{"lat":-9,"lng":19, "name":"Russia"},
+  "tags":['b', 'c', 'd'],
+  "photos":['/001/1.jpg','/002/2.jpg'],
+  "hints":['hint1','hint2', 'hint3'],
+  "isFound":false,
+  "order":2
+}
+{
+  "_id":{"$oid":"000000000000000000000003"},
+  "name":"Bitcoins",
+  "difficulty":2,
+  "loc":{"lat":-45,"lng":-5, "name":"Monaco"},
+  "tags":['e', 'c', 'd'],
+  "photos":['/003/1.jpg','/003/2.jpg'],
+  "hints":['hint1','hint2', 'hint3'],
+  "isFound":false,
+  "order":3
+}

@@ -1,0 +1,71 @@
+[1mdiff --git a/README.md b/README.md[m
+[1mindex 7c1e49f..2f99587 100644[m
+[1m--- a/README.md[m
+[1m+++ b/README.md[m
+[36m@@ -8,25 +8,23 @@[m [mwrite a description about your project[m
+ [m
+ ### Models[m
+ ```[m
+[31m-Model 1[m
+[31m-prop-a[m
+[31m-prop-b[m
+[31m-.classMethod-c[m
+[31m-#instanceMethod-d[m
+[32m+[m[32mTreasure[m
+[32m+[m[32mName[m
+[32m+[m[32mLocation[m
+[32m+[m[32mHints[m
+[32m+[m[32mPhotos[m
+[32m+[m[32mTabs[m
+[32m+[m[32mOrder[m
+[32m+[m[32mDifficulty[m
+[32m+[m[32m.all[m
+[32m+[m[32m.create[m
+[32m+[m[32m.findById[m
+[32m+[m[32m.found[m
+ ```[m
+[31m-[m
+[31m-```[m
+[31m-Model 2[m
+[31m-prop-e[m
+[31m-prop-f[m
+[31m-.classMethod-g[m
+[31m-#instanceMethod-h[m
+[31m-```[m
+[31m-[m
+ ### Features[m
+[31m-- feature 1[m
+[31m-- feature 2[m
+[31m-- feature 3[m
+[32m+[m[32m- Add treasures, with pictures[m[41m [m
+[32m+[m[32m- A map shows waypoints to treasures in order[m
+[32m+[m[32m- Made with bootstrap[m
+ [m
+ ### Running Tests[m
+ ```bash[m
+[1mdiff --git a/app/views/shared/nav.jade b/app/views/shared/nav.jade[m
+[1mindex 1f04fe0..c22fac0 100644[m
+[1m--- a/app/views/shared/nav.jade[m
+[1m+++ b/app/views/shared/nav.jade[m
+[36m@@ -6,7 +6,7 @@[m
+         span.icon-bar[m
+         span.icon-bar[m
+         span.icon-bar[m
+[31m-      a.navbar-brand(href='/') Express.js Template[m
+[32m+[m[32m      a.navbar-brand(href='/') Treasure Map[m[41m [m
+ [m
+     .collapse.navbar-collapse#bs-navbar-collapse[m
+       ul.nav.navbar-nav.navbar-right[m
+[1mdiff --git a/app/views/shared/template.jade b/app/views/shared/template.jade[m
+[1mindex 8ccf24f..6a5d401 100644[m
+[1m--- a/app/views/shared/template.jade[m
+[1m+++ b/app/views/shared/template.jade[m
+[36m@@ -4,7 +4,7 @@[m [mhtml(lang='en')[m
+     meta(charset='utf-8')[m
+     meta(http-equiv='X-UA-Compatible', content='IE=edge')[m
+     meta(name='viewport', content='width=device-width, initial-scale=1')[m
+[31m-    title Express.js Template[m
+[32m+[m[32m    title Treasure Map[m
+     link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')[m
+     link(rel='stylesheet', href='/css/style.css')[m
+   body[m
