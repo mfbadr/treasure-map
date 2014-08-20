@@ -1,6 +1,8 @@
 'use strict';
 
-var Mongo = require('mongodb');
+var Mongo = require('mongodb'),
+       fs = require('fs'),
+     path = require('path');
 
 function Treasure(o){
   this.loc        = {};
@@ -39,6 +41,32 @@ Treasure.prototype.save = function(cb){
   Treasure.collection.save(this, cb);
 };
 
+Treasure.prototype.addPhotos = function(files, cb){
+  var dir   = __dirname + '/../static/img/' + this._id,
+      self  = this,
+      exist = fs.existsSync(dir); //true if the directory already exists
+  if(!exist){
+    fs.mkdirSync(dir); //Nodes way of making a file, uses the fs module
+  }
+
+  files.photos.forEach(function(photo){
+    var ext = path.extname(photo.path),
+        rel = '/img/' + self._id + '/' + self.photos.length +  ext,
+        abs = dir + '/' + self.photos.length + ext;
+
+    fs.renameSync(photo.path, abs); //move and rename
+    self.photos.push(rel);
+  });
+  Treasure.collection.save(self, cb);
+};
+
+Treasure.create = function(fields, files, cb){
+  var t = new Treasure(fields);
+  t.save(function(){
+    t.addPhotos(files, cb);
+  });
+};
+
+
 module.exports = Treasure;
 
-//HELPER
