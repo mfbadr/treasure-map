@@ -28,10 +28,12 @@ Treasure.findById = function(id, cb){
 };
 
 Treasure.found = function(id, cb){
-  Treasure.findById(id, function(t){
-    t.isFound = true;
-    Treasure.collection.save(t, cb);
-  });
+  id = Mongo.ObjectID(id);
+  Treasure.collection.update({_id:id}, {$set: {isFound:true}}, cb);
+};
+
+Treasure.prototype.save = function(cb){
+  Treasure.collection.save(this, cb);
 };
 
 module.exports = Treasure;

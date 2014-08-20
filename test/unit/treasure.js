@@ -41,8 +41,8 @@ describe('Treasure', function(){
 
   describe('.query', function(){
     it('should get all people', function(done){
-      Treasure.query({},{},function(err, people){
-        expect(people).to.have.length(3);
+      Treasure.query({},{},function(err, treasures){
+        expect(treasures).to.have.length(3);
         done();
       });
     });
@@ -56,10 +56,23 @@ describe('Treasure', function(){
     });
   });
   describe('.found', function(){
-    it('should find a treasure and make it found', function(){
+    it('should find a treasure and make it found', function(done){
       Treasure.found('000000000000000000000001', function(){
         Treasure.findById('000000000000000000000001', function(t){
           expect(t.isFound).to.be.true;
+          done();
+        });
+      });
+    });
+  });
+  describe('#save', function(){
+    it('should save a treasure to the db', function(done){
+      var o = {name:'Pearls', difficulty:'1', loc:{lat:-22, lng:33, name:'Paris, France'}, hints:{1:'a',2:'b'}, order:'1', tags:'a, b, c'},
+          t = new Treasure(o);
+      t.save(function(){
+        Treasure.query({},{},function(err, treasures){
+          expect(treasures).to.have.length(4);
+          done();
         });
       });
     });
