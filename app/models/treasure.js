@@ -1,5 +1,7 @@
 'use strict';
 
+var Mongo = require('mongodb');
+
 function Treasure(o){
   this.loc        = o.loc;
   this.name       = o.name;
@@ -18,10 +20,16 @@ Treasure.all = function(cb){
   Treasure.collection.find().toArray(cb);
 };
 
+Treasure.findById = function(id, cb){
+  id = Mongo.ObjectID(id);
+  Treasure.collection.findOne({_id:id}, function(err, obj){
+    cb(obj);
+  });
+};
+
 module.exports = Treasure;
 
 //HELPER
-//
 function makeArray(o){
   var keys = Object.keys(o),
      array = [];
