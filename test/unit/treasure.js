@@ -47,5 +47,12 @@ describe('Treasure', function(){
       });
     });
   });
+  describe('.findById', function(){
+    it('should return one treasure', function(){
+      Treasure.findById('000000000000000000000001', function(t){
+        expect(t.name).to.equal('Diamonds');
+      });
+    });
+  });
 });
 
