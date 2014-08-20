@@ -39,18 +39,28 @@ describe('Treasure', function(){
     });
   });
 
-  describe('.all', function(){
+  describe('.query', function(){
     it('should get all people', function(done){
-      Treasure.all(function(err, people){
+      Treasure.query({},{},function(err, people){
         expect(people).to.have.length(3);
         done();
       });
     });
   });
   describe('.findById', function(){
-    it('should return one treasure', function(){
+    it('should return one treasure', function(done){
       Treasure.findById('000000000000000000000001', function(t){
         expect(t.name).to.equal('Diamonds');
+        done();
+      });
+    });
+  });
+  describe('.found', function(){
+    it('should find a treasure and make it found', function(){
+      Treasure.found('000000000000000000000001', function(){
+        Treasure.findById('000000000000000000000001', function(t){
+          expect(t.isFound).to.be.true;
+        });
       });
     });
   });
