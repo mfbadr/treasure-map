@@ -4,6 +4,7 @@ var morgan         = require('morgan'),
     bodyParser     = require('body-parser'),
     methodOverride = require('express-method-override'),
     less           = require('less-middleware'),
+    treasure       = require('../controllers/treasures'),
     home           = require('../controllers/home');
 
 module.exports = function(app, express){
@@ -14,6 +15,7 @@ module.exports = function(app, express){
   app.use(methodOverride());
 
   app.get('/', home.index);
+  app.get('/treasures', treasure.index);
 
   console.log('Express: Routes Loaded');
 };

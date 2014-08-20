@@ -8,25 +8,23 @@ write a description about your project
 
 ### Models
 ```
-Model 1
-prop-a
-prop-b
-.classMethod-c
-#instanceMethod-d
+Treasure
+Name
+Location
+Hints
+Photos
+Tabs
+Order
+Difficulty
+.all
+.create
+.findById
+.found
 ```
-
-```
-Model 2
-prop-e
-prop-f
-.classMethod-g
-#instanceMethod-h
-```
-
 ### Features
-- feature 1
-- feature 2
-- feature 3
+- Add treasures, with pictures 
+- A map shows waypoints to treasures in order
+- Made with bootstrap
 
 ### Running Tests
 ```bash
