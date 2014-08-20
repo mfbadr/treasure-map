@@ -10,14 +10,14 @@ block content
               label(for='treasureName') Treasure Name
               input#treasureName.form-control(type='text', placeholder='Treasure Name', name='name')
             .form-group
-              label(for='locName') Treasure Name
+              label(for='locName') Location
               input#locName.form-control(type='text', name='loc')
               input#locLat.form-control(type='hidden', name='loc')
               input#locLng.form-control(type='hidden', name='loc')
             .form-group#hints
               label(for='hint') Hints
-              input#hint.form-control(type='text', placeholder='Hints', name='hint')
-              div.btn.btn-primary Add Hint
+              input#hint.form-control(type='text', placeholder='Hint', name='hint')
+            button#addHint.btn.btn-primary.btn-lg(type='button') Add Hint
           .col-xs-6
             .form-group
               label(for='photos') Upload Photo
@@ -36,4 +36,5 @@ block content
               input#order.form-control(type='number', name='order')
             button.btn.btn-primary.btn-lg(type='submit') Submit
 
-  script(src='/js/user/home.js')
+block scripts
+  script(src='/js/user/newTreasure.js')
