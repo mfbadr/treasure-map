@@ -3,13 +3,16 @@
 var Mongo = require('mongodb');
 
 function Treasure(o){
-  this.loc        = o.loc;
-  this.name       = o.name;
+  this.loc        = {};
+  this.loc.name   = o.loc[0];
+  this.loc.lat    = o.loc[1];
+  this.loc.lng    = o.loc[2];
+  this.name       = o.name[0];
   this.photos     = [];
-  this.hints      = makeArray(o.hints);
-  this.tags       = o.tags.split(',').map(function(t){return t.trim();});
-  this.order      = o.order * 1;
-  this.difficulty = o.difficulty * 1;
+  this.hints      = o.hints;
+  this.tags       = o.tags[0].split(',').map(function(t){return t.trim();});
+  this.order      = o.order[0] * 1;
+  this.difficulty = o.difficulty[0] * 1;
 }
 
 Object.defineProperty(Treasure, 'collection', {
@@ -39,12 +42,3 @@ Treasure.prototype.save = function(cb){
 module.exports = Treasure;
 
 //HELPER
-function makeArray(o){
-  var keys = Object.keys(o),
-     array = [];
-
-  for (var i = 1; i <= keys.length; i++){
-    array.push(o[i]);
-  }
-  return array;
-}
