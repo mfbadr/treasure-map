@@ -10,7 +10,6 @@
   "noarg": true,
   "noempty": true,
   "nonbsp": true,
-  "quotmark": "single",
   "undef": true,
   "unused": "vars",
   "strict": true,

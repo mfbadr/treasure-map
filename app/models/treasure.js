@@ -6,7 +6,7 @@ var Mongo = require('mongodb'),
 
 function Treasure(o){
   this.loc        = {};
-  this.loc.name   = o.loc[0] * 1;
+  this.loc.name   = o.loc[0];
   this.loc.lat    = o.loc[1] * 1;
   this.loc.lng    = o.loc[2] * 1;
   this.name       = o.name[0];

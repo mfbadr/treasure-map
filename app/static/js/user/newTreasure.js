@@ -6,8 +6,9 @@
   });
 
   function addHint(){
-    var $input = "<input id='hint' type='text' placeholder='Hint' name='hint' class='form-control'>";
+    var $input = "<input id='hint' type='text' placeholder='Hint' name='hints' class='form-control'>";
     $('#hints').append($input);
   }
+
 })();
 
