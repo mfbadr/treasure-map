@@ -1,12 +1,13 @@
 'use strict';
 
 var mp = require('multiparty'),
+    linkBuilder = require('../helpers/link-builder'),
     Treasure = require('../models/treasure');
 
 exports.index = function(req, res){
-  Treasure.query({}, function(err, treasures){
-    console.log(treasures);
-    res.render('treasure/index', {treasures:treasures});
+  Treasure.query(req.query, function(err, treasures){
+    //console.log(treasures);
+    res.render('treasure/index', {treasures:treasures, linkBuilder:linkBuilder, query:req.query});
   });
 };
 

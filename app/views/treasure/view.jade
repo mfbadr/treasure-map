@@ -19,7 +19,8 @@ block content
             each hint in treasure.hints
               li= hint
       .row
-        a.btn.btn-primary(href='/treasures/#{treasure._id}/found') Found it!
+        if treasure.isFound === false
+          a.btn.btn-primary(href='/treasures/#{treasure._id}/found') Found it!
 block scripts
   script(src='/js/user/viewTreasure.js')
 
