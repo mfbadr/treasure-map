@@ -20,7 +20,7 @@ exports.url = function(query, key, value, text){
 
 exports.tags = function(query, tags){
   var links = tags.map(function(tag){
-    return exports.url({}, 'tag', tag, tag)
+    return exports.url({}, 'tag', tag, tag);
   });
 
   return links.join(',');

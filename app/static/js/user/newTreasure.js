@@ -1,4 +1,5 @@
 /* global google:true */
+
 (function(){
   'use strict';
 

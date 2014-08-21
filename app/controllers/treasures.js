@@ -12,7 +12,10 @@ exports.index = function(req, res){
 };
 
 exports.init = function(req, res){
-  res.render('treasure/init');
+  Treasure.collection.count(function(err, order){
+    order++;
+    res.render('treasure/init', {order:order});
+  });
 };
 
 exports.create = function(req, res){
