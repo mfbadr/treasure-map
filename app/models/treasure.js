@@ -23,11 +23,14 @@ Object.defineProperty(Treasure, 'collection', {
   get: function(){return global.mongodb.collection('treasures');}
 });
 
-Treasure.query = function(query, sort, cb){
-  // change to accept req.query
-  // find if query contains tags or sort
+Treasure.query = function(query, cb){
+  var filter = {},
+        sort = {};
+
+  if(query.tag){filter = {tags:{$in:[query.tag]}};}
+  if(query.sort){sort[query.sort] = query.order * 1;}
   // pass those into collection.find
-  Treasure.collection.find(query).sort(sort).toArray(cb);
+  Treasure.collection.find(filter).sort(sort).toArray(cb);
 };
 
 Treasure.findById = function(id, cb){
@@ -40,12 +43,11 @@ Treasure.findById = function(id, cb){
 Treasure.found = function(id, cb){
   id = Mongo.ObjectID(id);
   Treasure.collection.update({_id:id}, {$set: {isFound:true}}, function(){
-    Treasure.findById(req.params.id, function(treasure){
-      Treasure.collection.update({order:treasure.order + 1}, {$set: {isLinkable:true}, cb} )
+    Treasure.findById(id.toString(), function(treasure){
+      Treasure.collection.update({order:treasure.order + 1}, {$set: {isLinkable:true}}, cb);
     });
   });
 };
-
 Treasure.prototype.save = function(cb){
   Treasure.collection.save(this, cb);
 };

@@ -65,6 +65,7 @@
     directionsService.route(request, function(response, status){
       //debugger;
       if (status === google.maps.DirectionsStatus.OK){
+        console.log(status);
         directionsDisplay.setDirections(response);
       }else{
         alert('Driving directions not available. Is your treasure on different continents?');

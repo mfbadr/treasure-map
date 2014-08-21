@@ -19,7 +19,10 @@ block content
             tbody
               each treasure in treasures
                 tr(data-name='#{treasure.loc.name}', data-lat='#{treasure.loc.lat}', data-lng='#{treasure.loc.lng}', data-order='#{treasure.order}')
-                  td: a(href='/treasures/#{treasure._id}')= treasure.name
+                  if treasure.isLinkable == true
+                    td: a(href='/treasures/#{treasure._id}')= treasure.name
+                  else
+                    td= treasure.name
                   td= treasure.loc.name
                   td= treasure.difficulty
                   td= treasure.tags

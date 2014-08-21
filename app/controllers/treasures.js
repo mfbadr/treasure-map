@@ -4,7 +4,7 @@ var mp = require('multiparty'),
     Treasure = require('../models/treasure');
 
 exports.index = function(req, res){
-  Treasure.query({},{order:1}, function(err, treasures){
+  Treasure.query({}, function(err, treasures){
     console.log(treasures);
     res.render('treasure/index', {treasures:treasures});
   });
