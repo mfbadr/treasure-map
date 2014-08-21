@@ -26,7 +26,6 @@
   "disallowSpacesInsideArrayBrackets": "all",
   "disallowSpacesInsideParentheses": true,
   "requireCommaBeforeLineBreak": true,
-  "requireCamelCaseOrUpperCaseIdentifiers": true,
   "disallowMultipleLineStrings": true,
   "validateIndentation": 2,
   "disallowMixedSpacesAndTabs": true,

@@ -15,6 +15,7 @@ function Treasure(o){
   this.tags       = o.tags[0].split(',').map(function(t){return t.trim();});
   this.order      = o.order[0] * 1;
   this.difficulty = o.difficulty[0] * 1;
+  this.isFound    = false;
 }
 
 Object.defineProperty(Treasure, 'collection', {
@@ -22,7 +23,10 @@ Object.defineProperty(Treasure, 'collection', {
 });
 
 Treasure.query = function(query, sort, cb){
-  Treasure.collection.find(query, sort).toArray(cb);
+  // change to accept req.query
+  // find if query contains tags or sort
+  // pass those into collection.find
+  Treasure.collection.find(query).sort(sort).toArray(cb);
 };
 
 Treasure.findById = function(id, cb){
