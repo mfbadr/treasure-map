@@ -16,6 +16,7 @@ function Treasure(o){
   this.order      = o.order[0] * 1;
   this.difficulty = o.difficulty[0] * 1;
   this.isFound    = false;
+  this.isLinkable = this.order === 1 ? true : false;
 }
 
 Object.defineProperty(Treasure, 'collection', {
@@ -38,7 +39,11 @@ Treasure.findById = function(id, cb){
 
 Treasure.found = function(id, cb){
   id = Mongo.ObjectID(id);
-  Treasure.collection.update({_id:id}, {$set: {isFound:true}}, cb);
+  Treasure.collection.update({_id:id}, {$set: {isFound:true}}, function(){
+    Treasure.findById(req.params.id, function(treasure){
+      Treasure.collection.update({order:treasure.order + 1}, {$set: {isLinkable:true}, cb} )
+    });
+  });
 };
 
 Treasure.prototype.save = function(cb){

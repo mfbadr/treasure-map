@@ -1,0 +1,25 @@
+extends ../shared/template
+block content
+  h2 View a treasure
+  .panel.panel-default
+    .panel-body
+      .row
+        .col-xs-8
+          #map
+        .col-xs-4
+          #photos
+            each photo in treasure.photos
+              img.img-thumbnail(src=photo)
+      .row#data(data-name='#{treasure.loc.name}', data-lat='#{treasure.loc.lat}', data-lng='#{treasure.loc.lng}', data-order='#{treasure.order}')
+        .col-xs-6
+          h2= treasure.name
+          h3= treasure.loc.name
+          h4 Hints
+          ul
+            each hint in treasure.hints
+              li= hint
+      .row
+        a.btn.btn-primary(href='/treasures/#{treasure._id}/found') Found it!
+block scripts
+  script(src='/js/user/viewTreasure.js')
+
