@@ -1,6 +1,10 @@
 extends ../shared/template
 block content
-  h2 View a treasure
+  .container
+    #banner.page-header
+      .row
+        .col-xs-12
+          h2#header View a treasure
   .panel.panel-default
     .panel-body
       .row
@@ -21,6 +25,9 @@ block content
       .row
         if treasure.isFound === false
           a.btn.btn-primary(href='/treasures/#{treasure._id}/found') Found it!
+        else
+          a.btn.btn-primary(href='/treasures') Return to Treasures
+
 block scripts
   script(src='/js/user/viewTreasure.js')
 

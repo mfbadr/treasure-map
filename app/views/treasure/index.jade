@@ -1,6 +1,10 @@
 extends ../shared/template
 block content
-  h2 View All treasures
+  .container
+    #banner.page-header
+      .row
+        .col-xs-12
+          h2#header View All treasures
   .panel.panel-default
     .panel-body
       .row
@@ -19,7 +23,10 @@ block content
             tbody
               each treasure in treasures
                 tr(data-name='#{treasure.loc.name}', data-lat='#{treasure.loc.lat}', data-lng='#{treasure.loc.lng}', data-order='#{treasure.order}')
-                  if treasure.isLinkable == true
+                  if treasure.isLinkable == true && treasure.isFound == true
+                    td: a(href='/treasures/#{treasure._id}')
+                      img(src='/img/chest.gif')
+                  else if treasure.isLinkable == true && treasure.isFound == false
                     td: a(href='/treasures/#{treasure._id}')= treasure.name
                   else
                     td= treasure.name
@@ -27,7 +34,10 @@ block content
                   td= linkBuilder.difficulty(treasure.difficulty)
                   td!= linkBuilder.tags(query, treasure.tags)
                   td= treasure.order
-                  td= treasure.isFound
+                  if treasure.isFound == true
+                    td: img(src='/img/check.png', height='36px')
+                  else
+                    td: img(src='/img/redex.gif', height='30px')
 block scripts
   script(src='/js/user/home.js')
 
