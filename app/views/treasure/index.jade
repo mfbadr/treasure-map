@@ -19,11 +19,11 @@ block content
                 th!= linkBuilder.sort(query, 'difficulty', 'Difficulty')
                 th Tags
                 th!= linkBuilder.sort(query, 'order', 'Order')
-                th!= linkBuilder.sort(query, 'isFound', 'is Found?')
+                th!= linkBuilder.sort(query, 'isFound', 'Found?')
             tbody
               each treasure in treasures
                 tr(data-name='#{treasure.loc.name}', data-lat='#{treasure.loc.lat}', data-lng='#{treasure.loc.lng}', data-order='#{treasure.order}')
-                  if treasure.isLinkable == true && treasure.isFound == true
+                  if treasure.isFound == true
                     td: a(href='/treasures/#{treasure._id}')
                       img(src='/img/chest.gif')
                   else if treasure.isLinkable == true && treasure.isFound == false
@@ -35,9 +35,9 @@ block content
                   td!= linkBuilder.tags(query, treasure.tags)
                   td= treasure.order
                   if treasure.isFound == true
-                    td: img(src='/img/check.png', height='36px')
+                    td: img.check(src='/img/check.png')
                   else
-                    td: img(src='/img/redex.gif', height='30px')
+                    td: img.redex(src='/img/redex.gif')
 block scripts
   script(src='/js/user/home.js')
 
