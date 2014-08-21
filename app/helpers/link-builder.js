@@ -23,7 +23,7 @@ exports.tags = function(query, tags){
     return exports.url({}, 'tag', tag, tag);
   });
 
-  return links.join(',');
+  return links.join(', ');
 };
 
 
