@@ -8,7 +8,7 @@
 
   $(document).ready(function(){
     directionsDisplay = new google.maps.DirectionsRenderer();
-    initMap(0,0,2);
+    initMap(39.82,-98.58,4);
     directionsDisplay.setMap(map);
     var locations = getLocations();
     calcRoute(locations);
@@ -66,9 +66,10 @@
       //debugger;
       if (status === google.maps.DirectionsStatus.OK){
         directionsDisplay.setDirections(response);
+      }else{
+        alert('Driving directions not available. Is your treasure on different continents?');
       }
     });
-
   }
 })();
 

@@ -18,6 +18,8 @@ module.exports = function(app, express){
   app.get('/treasures', treasure.index);
   app.get('/treasures/new', treasure.init);
   app.post('/treasures', treasure.create);
+  app.get('/treasures/:id', treasure.view);
+  app.get('/treasures/:id/found', treasure.found);
 
   console.log('Express: Routes Loaded');
 };

@@ -23,3 +23,15 @@ exports.create = function(req, res){
     });
   });
 };
+
+exports.view = function(req, res){
+  Treasure.findById(req.params.id, function(treasure){
+    res.render('treasure/view', {treasure:treasure});
+  });
+};
+
+exports.found = function(req, res){
+  Treasure.found(req.params.id, function(){
+    res.redirect('/treasures');
+  });
+};
