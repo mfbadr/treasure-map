@@ -12,7 +12,15 @@
     directionsDisplay.setMap(map);
     var locations = getLocations();
     calcRoute(locations);
+    locations.forEach(function(loc){
+      addMarker(loc.lat, loc.lng, loc.name);
+    });
   });
+
+  function addMarker(lat, lng, name){
+    var latLng = new google.maps.LatLng(lat, lng);
+    new google.maps.Marker({map: map, position: latLng, title: name, animation: google.maps.Animation.DROP});
+  }
 
   function initMap(lat, lng, zoom){
     var mapOptions = {center: new google.maps.LatLng(lat, lng), zoom: zoom, mapTypeId: google.maps.MapTypeId.ROADMAP};
